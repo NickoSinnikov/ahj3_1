@@ -9,7 +9,7 @@ export default class Game {
     }
 
     damage(event) {
-        if (!event.target.classList.contains('goblin')) {
+        if (!event.target.classList.contains('active_cell')) {
             return;
         }
         this.counters.increaseDamaged();
@@ -17,14 +17,14 @@ export default class Game {
         if (this.counters.damagedCount === 10) {
             this.win();
         }
-        document.querySelector('.goblin').remove();
+        document.querySelector('.active_cell').remove();
         clearInterval(this.interval);
         this.punchGoblin();
     }
 
     punchGoblin() {
-        if (document.querySelector('.goblin')) {
-            document.querySelector('.goblin').remove();
+        if (document.querySelector('.active_cell')) {
+            document.querySelector('.active_cell').remove();
             this.counters.decreaseHealth();
             clearInterval(this.interval);
             if (this.counters.healthCount === 4) {
@@ -38,7 +38,7 @@ export default class Game {
         const randomCell = this.cells[randomIndex];
         this.previousIndex = randomIndex;
         const goblin = document.createElement('div');
-        goblin.classList.add('goblin');
+        goblin.classList.add('active_cell');
         randomCell.appendChild(goblin);
         goblin.addEventListener('click', this.damage.bind(this));
         this.interval = setInterval(this.punchGoblin.bind(this), 1000);
