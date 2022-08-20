@@ -14,7 +14,7 @@ export default class Game {
         }
         this.counters.increaseDamaged();
         event.target.removeEventListener('click', this.damage);
-        if (this.counters.damagedCounter === 10) {
+        if (this.counters.damagedCount === 10) {
             this.win();
         }
         document.querySelector('.goblin').remove();
@@ -25,9 +25,9 @@ export default class Game {
     punchGoblin() {
         if (document.querySelector('.goblin')) {
             document.querySelector('.goblin').remove();
-            this.counters.increaseHealthy();
+            this.counters.decreaseHealth();
             clearInterval(this.interval);
-            if (this.counters.healthyCounter === 5) {
+            if (this.counters.healthCount === 4) {
                 this.fail();
             }
         }
@@ -46,17 +46,17 @@ export default class Game {
 
     win() {
         alert('You win!');
-        this.counters.damagedDiv.innerText = 0;
-        this.counters.damagedCounter = 0;
-        this.counters.healthyDiv.innerText = 0;
-        this.counters.healthyCounter = 0;
+        this.counters.damaged.innerText = 0;
+        this.counters.damagedCount = 0;
+        this.counters.health.innerText = 0;
+        this.counters.healthCount = 0;
     }
 
     fail() {
         alert('You lose!');
-        this.counters.damagedDiv.innerText = 0;
-        this.counters.damagedCounter = 0;
-        this.counters.healthyDiv.innerText = 0;
-        this.counters.healthyCounter = 0;
+        this.counters.damaged.innerText = 0;
+        this.counters.damagedCount = 0;
+        this.counters.health.innerText = 0;
+        this.counters.healthCount = 0;
     }
 }
