@@ -6,5 +6,4 @@ export default function mouse(event) {
     cursor.style.left = x + "px";
     cursor.style.top = y + "px";
 };
-
 window.addEventListener("mousemove", mouse);

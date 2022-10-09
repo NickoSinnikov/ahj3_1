@@ -27,7 +27,8 @@ export default class Game {
             document.querySelector('.active_cell').remove();
             this.counters.decreaseHealth();
             clearInterval(this.interval);
-            if (this.counters.healthCount === 4) {
+            console.log(this.counters.healthCount);
+            if (this.counters.healthCount === 0) {
                 this.fail();
             }
         }
