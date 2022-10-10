@@ -12,7 +12,7 @@ export default class Game {
         if (!event.target.classList.contains('active_cell')) {
             return;
         }
-        this.counters.increaseDamaged();
+        this.counters.increaseDamage();
         event.target.removeEventListener('click', this.damage);
         if (this.counters.damagedCount === 10) {
             this.win();
@@ -50,7 +50,7 @@ export default class Game {
         this.counters.damaged.innerText = 0;
         this.counters.damagedCount = 0;
         this.counters.health.innerText = 0;
-        this.counters.healthCount = 0;
+        this.counters.healthCount = 4;
     }
 
     fail() {
@@ -58,6 +58,6 @@ export default class Game {
         this.counters.damaged.innerText = 0;
         this.counters.damagedCount = 0;
         this.counters.health.innerText = 0;
-        this.counters.healthCount = 0;
+        this.counters.healthCount = 4;
     }
 }
